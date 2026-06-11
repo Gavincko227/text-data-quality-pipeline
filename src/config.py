@@ -1,4 +1,3 @@
-from typing import Dict
 import os
 
 
@@ -11,15 +10,13 @@ class Config:
         self.max_avg_word_length = 10
         self.max_punctuation_ratio = 0.1
         self.max_digit_ratio = 0.1
-        self.punctuation_ratio = 0.1
-        self.digit_ratio = 0.1
         self.dedup_threshold = 0.8
         self.dedup_shingles = 5
         self.pii_entities = ["EMAIL_ADDRESS", "PHONE_NUMBER", "PERSON"]
-        self.s3_bucket = "my-bucket"
+        self.s3_bucket = os.getenv("MINIO_BUCKET", "text-data-quality")
         self.s3_endpoint_url = "http://localhost:9000"
-        self.s3_access_key = "access_key"
-        self.s3_secret_key = "secret_key"
+        self.s3_access_key = os.getenv("MINIO_ACCESS_KEY", "minioadmin")
+        self.s3_secret_key = os.getenv("MINIO_SECRET_KEY", "minioadmin")
         self.output_parquet_path = "output/data.parquet"
         self.output_manifest_path = "output/manifest.json"
 
