@@ -4,7 +4,6 @@ import logging
 import datasets
 from typing import Generator
 
-from src.config import config
 
 
 # Initialize logger
